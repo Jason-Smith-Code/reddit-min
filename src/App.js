@@ -5,6 +5,7 @@ import SearchBar from './features/Search/SearchBar';
 import PostList from './features/PostList/PostList';
 
 function App() {
+
   return (
     <div className="App">
       <div className="MainContainer">

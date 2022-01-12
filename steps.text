@@ -1,0 +1,16 @@
+- The user types in a string into the search box
+- The typed string updates the current state of the searchTerm
+When the user clicks the search button, the the current state of searchTerm (the string) is passed through a function
+The function takes the searchTerm, and finds any gaps between words, and replaces those gaps with %20
+The full phrase is converted into a reddit url which then returns json object containing an array of objects (post data)
+I then use this data to render in the post list.
+
+https://redux-toolkit.js.org/usage/usage-guide
+
+
+Start simple
+
+Create an empty array and asign it to redux state
+Then create a button, which adds an object to the state.
+
+Once this works, i then need to work out how to display the reddit post data json
