@@ -1,44 +1,40 @@
 import Post from "./Post";
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts, selectPosts } from '../../app/redditSlice'
+import { selectPosts, getPostsSuccess } from '../../app/redditSlice';
 
 const PostList = () => {
     const dispatch = useDispatch();
     const subreddits = useSelector(selectPosts);
+    // const currentArray = useSelector((state) => state.reddit.redditPosts);
+    const apiUrl = `https://www.reddit.com/subreddits.json`;
   
     useEffect(() => {
-      dispatch(fetchPosts());
-    }, [dispatch]);
+      fetch(apiUrl).then((response) => {
+        // Check if response is okay (reponse.ok == true)
+          if (response.ok) {
+              console.log(response)
+            return response.json();
+          } else {
+              
+            throw new Error('Something went wrong');
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          getPostsSuccess(data)
 
-    return (
-        <Post className="subreddit-card">
-          <h2>Subreddits</h2>
-          <ul className="subreddits-list">
-            {subreddits.map((redditPost) => (
-              <li
-                key={redditPost.id}
-              >
-                <button
-                  type="button"
-                >
-                  <img
-                    src={
-                        redditPost.icon_img ||
-                      `https://api.adorable.io/avatars/25/${redditPost.display_name}`
-                    }
-                    alt={`${redditPost.display_name}`}
-                    className="subreddit-icon"
-                    style={{ border: `3px solid ${redditPost.primary_color}` }}
-                  />
-                  {redditPost.display_name}
-                </button>
-              </li>
+        })
+        .catch((error) => {
+        });
+  }, [dispatch]); 
 
-            ))}
-          </ul>
-        </Post>
-      );
+  return (
+    <div>
+      <h2>Subreddits</h2>
+      <Post />
+    </div> 
+  );
 }
 
 export default PostList;

@@ -2,16 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 // import the api file here
 import { getPostsFromReddit } from '../api/RedditAPI';
 // I need to verify what states I want to keep track of here
-const initialState = {
-  posts: [],
-  searchTerm: '',
-  isLoading: false,
-  error: false,
-};
 
 const redditSlice = createSlice({
   name: 'redditPosts',
-  initialState,
+  initialState: {
+    posts: [],
+    searchTerm: '',
+    isLoading: false,
+    error: false,
+  },
   reducers: {
     setSearchTerm(state, action) {
       state.searchTerm = action.payload;
@@ -22,7 +21,7 @@ const redditSlice = createSlice({
     },
     getPostsSuccess(state, action) {
       state.isLoading = false;
-      state.redditPosts = action.payload;
+      state.posts = action.payload;
     },
     getPostFail(state) {
       state.isLoading = false;
@@ -51,7 +50,5 @@ export const fetchPosts = () => async (dispatch) => {
   }
 };
 
-// const selectPosts = (state) => state. "store reducer name" . "initial state array name"
+// Export a constant which holds the current array of posts
 export const selectPosts = (state) => state.reddit.posts;
-
-// const selectSearchTerm = (state) => state.reddit.searchTerm;
