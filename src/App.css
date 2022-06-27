@@ -17,61 +17,22 @@ p, a {
   font-size: 16px;
 }
 
+h2 {
+  margin-bottom: 50px;
+}
+
 .App {
   width: 100%;
   padding:10px;
 }
 
-.MainContainer {
-  width: 100%;
-}
-
-.AppHeader {
-  width: 100%;
-  text-align: center;
-}
-
-.Content {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.SearchContainer {
-  width: 100%;
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.PostListContainer {
-  width:100%;
-}
-
-.PostContainer {
-  width: 100%;
-  margin-bottom: 50px;
-}
-
-.SquareContainer {
-  position:relative;
-  width: 100%;
-  padding-top: 100%;
-  border: 1px solid black;
-}
-
-.ImageContainer {
-  position: absolute;
-  top: 0;
-  left:0;
-  right:0;
-  bottom: 0;
-}
-
-.PostInfo {
+#main-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
+
+#reddit-posts-container {
+  min-width: 500px;
+  margin-right: 50px;
+}
+

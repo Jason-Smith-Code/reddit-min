@@ -1,22 +1,19 @@
-import React from 'react';
-import './App.css';
-import logo from './Logo.png';
-import SearchBar from './features/Search/SearchBar';
-import PostList from './features/PostList/PostList';
+import React from "react";
+import "./App.css";
+import logo from "./Logo.png";
+import SearchBar from "./features/search/SearchBar";
+import SubReddits from "./features/SubReddits/SubReddits";
+import Posts from "./features/posts/Posts";
 
 function App() {
-
   return (
     <div className="App">
-      <div className="MainContainer">
-        <header className="AppHeader">
-          <img alt="Logo" src={logo}></img>
-        </header>
-        <div className="SearchContainer">
-          <SearchBar />
-        </div>
-        <PostList />
-      </div>  
+      <img alt="Logo" src={logo}></img>
+      <SearchBar />
+      <div id="main-container">
+        <Posts />
+        <SubReddits />
+      </div>
     </div>
   );
 }
