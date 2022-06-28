@@ -9,8 +9,6 @@
 // display posts in a
 // https://www.reddit.com/r/pathofexile.json
 
-const API_ROOT = "https://www.reddit.com";
-
 // search display subreddits
 export const gfjfgk = async () => {
   const response = await fetch(
@@ -26,11 +24,15 @@ export const gfjfgk = async () => {
 // Default display
 
 // import the searchquery from state
+const root = "https://www.reddit.com/";
 let postSearchQuery = "diablo";
+let prefix = "r/Diablo/";
 // Search display
 export const getPostsFromReddit = async (subreddit) => {
   // const response = await fetch(`${API_ROOT}/search.json?q=${postSearchQuery}`);
-  const response = await fetch(`${API_ROOT}/search.json?q=${subreddit}`);
+
+  // https://www.reddit.com/r/Diablo/search.json?q=jason
+  const response = await fetch(`${root}${prefix}search.json?q=${subreddit}`);
   const json = await response.json();
   console.log(json.data.children.map((post) => post.data));
   return json.data.children.map((post) => post.data);
@@ -40,7 +42,7 @@ export const getPostsFromReddit = async (subreddit) => {
 
 // default display
 export const getSubredditsFromReddit = async () => {
-  const response = await fetch(`${API_ROOT}/subreddits.json`);
+  const response = await fetch(`${root}subreddits.json`);
   const json = await response.json();
   console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
