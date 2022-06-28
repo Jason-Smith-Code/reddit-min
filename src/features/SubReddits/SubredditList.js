@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, selectPosts } from "../../app/redditSlice";
+import { fetchSubreddits, selectSubreddits } from "../../app/redditSlice";
 import "./SubredditList.css";
 
 const SubredditList = () => {
   const [selectedSubreddit, setSelectedSubreddit] = useState("Home");
 
   const dispatch = useDispatch();
-  const subreddits = useSelector(selectPosts);
+  const subreddits = useSelector(selectSubreddits);
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchSubreddits());
   }, [dispatch]);
 
   // when selectedSubreddit changes need to take action
