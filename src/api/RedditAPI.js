@@ -27,13 +27,13 @@ export const gfjfgk = async () => {
 
 // import the searchquery from state
 let postSearchQuery = "diablo";
-
 // Search display
-export const getPostsFromReddit = async () => {
-  const response = await fetch(`${API_ROOT}/search.json?q=${postSearchQuery}`);
+export const getPostsFromReddit = async (subreddit) => {
+  // const response = await fetch(`${API_ROOT}/search.json?q=${postSearchQuery}`);
+  const response = await fetch(`${API_ROOT}/search.json?q=${subreddit}`);
   const json = await response.json();
-  console.log(json.data.children.map((subreddit) => subreddit.data));
-  return json.data.children.map((subreddit) => subreddit.data);
+  console.log(json.data.children.map((post) => post.data));
+  return json.data.children.map((post) => post.data);
 };
 
 // SUBREDDITS

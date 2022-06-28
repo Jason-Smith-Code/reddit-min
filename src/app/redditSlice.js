@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import the api file here
 import { getSubredditsFromReddit, getPostsFromReddit } from "../api/RedditAPI";
 
 // Thunk
@@ -13,10 +12,10 @@ export const fetchSubreddits = () => async (dispatch) => {
   }
 };
 
-export const fetchPosts = () => async (dispatch) => {
+export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
     dispatch(loadingPosts());
-    const posts = await getPostsFromReddit();
+    const posts = await getPostsFromReddit(subreddit);
     dispatch(getPostsSuccess(posts));
   } catch (error) {
     dispatch(getPostFail());
@@ -75,7 +74,7 @@ export const {
   loadingSubreddits,
   getSubredditsSuccess,
   getSubredditsFail,
-  setPostSearchTerm
+  setPostSearchTerm,
 } = redditSlice.actions;
 
 export default redditSlice.reducer;
