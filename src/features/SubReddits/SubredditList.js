@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSubreddits, selectSubreddits } from "../../app/redditSlice";
+import {
+  fetchDefaultSubreddits,
+  selectSubreddits,
+  selectSubredditSearchQuery,
+  fetchSubreddits,
+} from "../../app/subredditSlice";
 import "./SubredditList.css";
 
 const SubredditList = () => {
@@ -8,9 +13,16 @@ const SubredditList = () => {
 
   const dispatch = useDispatch();
   const subreddits = useSelector(selectSubreddits);
+  const search = useSelector(selectSubredditSearchQuery);
 
+  // Change the list when user performs a search
   useEffect(() => {
-    dispatch(fetchSubreddits());
+    dispatch(fetchSubreddits(search));
+  }, [search]);
+
+  // show default search
+  useEffect(() => {
+    dispatch(fetchDefaultSubreddits());
   }, [dispatch]);
 
   // when selectedSubreddit changes need to take action
@@ -29,25 +41,22 @@ const SubredditList = () => {
   return (
     <div>
       <ul id="subreddits-list">
-        {/* Add Search form here */}
-        <p>Selected Subreddit: {selectedSubreddit}</p>
-        <br />
-        {subreddits.map((redditPost) => (
+        {subreddits.map((subreddit) => (
           <li
             onClick={handleClick}
-            value={redditPost.display_name}
+            value={subreddit.display_name}
             className="subreddit-list-row"
-            key={redditPost.id}
+            key={subreddit.id}
           >
             <img
               className="subreddit-image"
               src={
-                redditPost.icon_img ||
-                `https://api.adorable.io/avatars/25/${redditPost.display_name}`
+                subreddit.icon_img ||
+                `https://api.adorable.io/avatars/25/${subreddit.display_name}`
               }
-              alt={`${redditPost.display_name}`}
+              alt={`${subreddit.display_name}`}
             />
-            {redditPost.display_name}
+            {subreddit.display_name}
           </li>
         ))}
       </ul>

@@ -25,7 +25,6 @@ export const gfjfgk = async () => {
 
 // import the searchquery from state
 const root = "https://www.reddit.com/";
-let postSearchQuery = "diablo";
 let prefix = "r/Diablo/";
 // Search display
 export const getPostsFromReddit = async (subreddit) => {
@@ -47,5 +46,11 @@ export const getSubredditsFromReddit = async () => {
   console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
 };
-
 // Search display
+export const getSearchSubredditsFromReddit = async (search) => {
+  const response = await fetch(`${root}subreddits/search.json?q=${search}`);
+  const json = await response.json();
+  console.log(json.data.children.map((subreddit) => subreddit.data));
+  return json.data.children.map((subreddit) => subreddit.data);
+};
+// https://www.reddit.com/subreddits/search.json?q=diablo

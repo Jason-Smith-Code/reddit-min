@@ -1,17 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSubredditsFromReddit, getPostsFromReddit } from "../api/RedditAPI";
+import { getPostsFromReddit } from "../api/RedditAPI";
 
 // Thunk
-export const fetchSubreddits = () => async (dispatch) => {
-  try {
-    dispatch(loadingSubreddits());
-    const subreddits = await getSubredditsFromReddit();
-    dispatch(getSubredditsSuccess(subreddits));
-  } catch (error) {
-    dispatch(getSubredditsFail());
-  }
-};
-
 export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
     dispatch(loadingPosts());
@@ -26,19 +16,11 @@ const redditSlice = createSlice({
   name: "redditPosts",
   initialState: {
     posts: [],
-    postSearchTerm: "Jason",
-    subreddits: [],
-    subredditSearchTerm: "",
+    postSearchTerm: "news",
     isLoading: false,
     error: false,
   },
   reducers: {
-    setPostSearchTerm(state, action) {
-      state.postSearchTerm = action.payload;
-    },
-    setSubredditSearchTerm(state, action) {
-      state.subredditSearchTerm = action.payload;
-    },
     loadingPosts(state) {
       state.isLoading = true;
       state.error = false;
@@ -51,35 +33,17 @@ const redditSlice = createSlice({
       state.isLoading = false;
       state.error = true;
     },
-    loadingSubreddits(state) {
-      state.isLoading = true;
-      state.error = false;
-    },
-    getSubredditsSuccess(state, action) {
-      state.isLoading = false;
-      state.subreddits = action.payload;
-    },
-    getSubredditsFail(state) {
-      state.isLoading = false;
-      state.error = true;
+    setPostSearchTerm(state, action) {
+      state.postSearchTerm = action.payload;
     },
   },
 });
 
-export const {
-  setSearchTerm,
-  loadingPosts,
-  getPostsSuccess,
-  getPostFail,
-  loadingSubreddits,
-  getSubredditsSuccess,
-  getSubredditsFail,
-  setPostSearchTerm,
-} = redditSlice.actions;
+export const { loadingPosts, getPostsSuccess, getPostFail, setPostSearchTerm } =
+  redditSlice.actions;
 
 export default redditSlice.reducer;
 
 // Export a constant which holds the current array of posts
 export const selectPosts = (state) => state.reddit.posts;
-export const selectSubreddits = (state) => state.reddit.subreddits;
 export const selectPostSearchQuery = (state) => state.reddit.postSearchTerm;
