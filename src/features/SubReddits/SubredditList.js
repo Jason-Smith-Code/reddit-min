@@ -5,9 +5,9 @@ import {
   selectSubreddits,
   selectSubredditSearchQuery,
   fetchSubreddits,
+  setSelectedSubreddit,
 } from "../../app/subredditSlice";
 import "./SubredditList.css";
-import { fetchPostsFromSubReddit } from "../../app/redditSlice";
 
 const SubredditList = () => {
   const [selectedLocalSubreddit, setSelectedLocalSubreddit] = useState("");
@@ -26,9 +26,8 @@ const SubredditList = () => {
     dispatch(fetchDefaultSubreddits());
   }, [dispatch]);
 
-  // when selected subreddit changes show posts from that subreddit
   useEffect(() => {
-    dispatch(fetchPostsFromSubReddit(selectedLocalSubreddit));
+    dispatch(setSelectedSubreddit(selectedLocalSubreddit));
   }, [selectedLocalSubreddit]);
 
   // handle click of subreddit
@@ -40,29 +39,26 @@ const SubredditList = () => {
   }
 
   return (
-    <div>
-      <p>Selected Subreddit: {selectedLocalSubreddit}</p>
-      <ul id="subreddits-list">
-        {subreddits.map((subreddit) => (
-          <li
-            onClick={handleClick}
-            value={subreddit.display_name_prefixed}
-            className="subreddit-list-row"
-            key={subreddit.id}
-          >
-            <img
-              className="subreddit-image"
-              src={
-                subreddit.icon_img ||
-                `https://api.adorable.io/avatars/25/${subreddit.display_name}`
-              }
-              alt={`${subreddit.display_name}`}
-            />
-            {subreddit.display_name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul id="subreddits-list">
+      {subreddits.map((subreddit) => (
+        <li
+          onClick={handleClick}
+          value={subreddit.display_name_prefixed}
+          className="subreddit-list-row"
+          key={subreddit.id}
+        >
+          <img
+            className="subreddit-image"
+            src={
+              subreddit.icon_img ||
+              `https://api.adorable.io/avatars/25/${subreddit.display_name}`
+            }
+            alt={`${subreddit.display_name}`}
+          />
+          {subreddit.display_name}
+        </li>
+      ))}
+    </ul>
   );
 };
 
