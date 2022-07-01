@@ -1,41 +1,34 @@
-// Home search without subreddit selected
-// https://www.reddit.com/search/?q=
-
-// search with subreddit selected
-// https://www.reddit.com/r/pathofexile/search/?q=chaos
-// Sub reddit
-//https://www.reddit.com/search/?q=NAMEOFSUBREDDIT&type=sr
-
-// display posts in a
-// https://www.reddit.com/r/pathofexile.json
-
-// search display subreddits
-export const gfjfgk = async () => {
-  const response = await fetch(
-    `https://www.reddit.com/search.json?q=diablo&type=sr`
-  );
-  const json = await response.json();
-  console.log(json.data.children.map((subreddit) => subreddit.data));
-  return json.data.children.map((subreddit) => subreddit.data);
-};
+const root = "https://www.reddit.com/";
 
 // POSTS
 
 // Default display
+// https://www.reddit.com/search/?q=diablo&restrict_sr=1&sr_nsfw=
 
-// import the searchquery from state
-const root = "https://www.reddit.com/";
-let prefix = "r/Diablo/";
 // Search display
-export const getPostsFromReddit = async (subreddit) => {
-  // const response = await fetch(`${API_ROOT}/search.json?q=${postSearchQuery}`);
-
-  // https://www.reddit.com/r/Diablo/search.json?q=jason
-  const response = await fetch(`${root}${prefix}search.json?q=${subreddit}`);
+export const getPostsFromReddit = async (prefix, search) => {
+  const response = await fetch(
+    `${root}${prefix}/search.json?q=${search}&restrict_sr=1&sr_nsfw=`
+  );
+  console.log(response);
   const json = await response.json();
   console.log(json.data.children.map((post) => post.data));
   return json.data.children.map((post) => post.data);
 };
+
+// https://www.reddit.com/r/Diablo/search.json?q=news&restrict_sr=1&sr_nsfw=
+
+// subreddit post search without search
+// https://www.reddit.com/r/Diablo.json
+export const getPostsFromRedditWithoutSearch = async (subreddit) => {
+  const response = await fetch(`${root}${subreddit}.json`);
+  console.log(response);
+  const json = await response.json();
+  console.log(json.data.children.map((post) => post.data));
+  return json.data.children.map((post) => post.data);
+};
+
+// https://www.reddit.com/r/Diablo/search.json?q=search&restrict_sr=1&sr_nsfw=
 
 // SUBREDDITS
 
@@ -53,4 +46,3 @@ export const getSearchSubredditsFromReddit = async (search) => {
   console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
 };
-// https://www.reddit.com/subreddits/search.json?q=diablo

@@ -30,6 +30,7 @@ const subredditSlice = createSlice({
   initialState: {
     subreddits: [],
     subredditSearchTerm: "",
+    selectedSubreddit: "",
     isLoading: false,
     error: false,
   },
@@ -49,6 +50,9 @@ const subredditSlice = createSlice({
     setsubRedditSearchTerm(state, action) {
       state.subredditSearchTerm = action.payload;
     },
+    setSelectedSubreddit(state, action) {
+      state.selectedSubreddit = action.payload;
+    },
   },
 });
 
@@ -57,6 +61,7 @@ export const {
   getSubredditsSuccess,
   getSubredditsFail,
   setsubRedditSearchTerm,
+  setSelectedSubreddit,
 } = subredditSlice.actions;
 
 export default subredditSlice.reducer;
@@ -64,5 +69,6 @@ export default subredditSlice.reducer;
 // Export a constant which holds the current array of posts
 
 export const selectSubreddits = (state) => state.subreddit.subreddits;
+export const selectSelectedSubreddit = (state) => state.subreddit.selectedSubreddit;
 export const selectSubredditSearchQuery = (state) =>
   state.subreddit.subredditSearchTerm;

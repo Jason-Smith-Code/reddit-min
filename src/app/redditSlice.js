@@ -1,11 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPostsFromReddit } from "../api/RedditAPI";
+import {
+  getPostsFromReddit,
+  getPostsFromRedditWithoutSearch,
+} from "../api/RedditAPI";
 
 // Thunk
-export const fetchPosts = (subreddit) => async (dispatch) => {
+export const fetchPosts = (prefix, search) => async (dispatch) => {
   try {
     dispatch(loadingPosts());
-    const posts = await getPostsFromReddit(subreddit);
+    const posts = await getPostsFromReddit(prefix, search);
+    dispatch(getPostsSuccess(posts));
+  } catch (error) {
+    dispatch(getPostFail());
+  }
+};
+
+export const fetchPostsFromSubReddit = (subreddit) => async (dispatch) => {
+  try {
+    dispatch(loadingPosts());
+    const posts = await getPostsFromRedditWithoutSearch(subreddit);
     dispatch(getPostsSuccess(posts));
   } catch (error) {
     dispatch(getPostFail());

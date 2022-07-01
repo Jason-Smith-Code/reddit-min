@@ -7,9 +7,10 @@ import {
   fetchSubreddits,
 } from "../../app/subredditSlice";
 import "./SubredditList.css";
+import { fetchPostsFromSubReddit } from "../../app/redditSlice";
 
 const SubredditList = () => {
-  const [selectedSubreddit, setSelectedSubreddit] = useState("Home");
+  const [selectedLocalSubreddit, setSelectedLocalSubreddit] = useState("");
 
   const dispatch = useDispatch();
   const subreddits = useSelector(selectSubreddits);
@@ -25,26 +26,27 @@ const SubredditList = () => {
     dispatch(fetchDefaultSubreddits());
   }, [dispatch]);
 
-  // when selectedSubreddit changes need to take action
+  // when selected subreddit changes show posts from that subreddit
+  useEffect(() => {
+    dispatch(fetchPostsFromSubReddit(selectedLocalSubreddit));
+  }, [selectedLocalSubreddit]);
 
   // handle click of subreddit
   function handleClick(e) {
     e.preventDefault();
     const value = e.target.getAttribute("value");
     console.log(value);
-    setSelectedSubreddit(value);
+    setSelectedLocalSubreddit(value);
   }
-
-  // perform a search for subreddits
-  // https://www.reddit.com/search/?q=NAMEOFSUBREDDIT&type=sr
 
   return (
     <div>
+      <p>Selected Subreddit: {selectedLocalSubreddit}</p>
       <ul id="subreddits-list">
         {subreddits.map((subreddit) => (
           <li
             onClick={handleClick}
-            value={subreddit.display_name}
+            value={subreddit.display_name_prefixed}
             className="subreddit-list-row"
             key={subreddit.id}
           >

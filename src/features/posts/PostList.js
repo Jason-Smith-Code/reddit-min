@@ -5,14 +5,17 @@ import {
   selectPosts,
   selectPostSearchQuery,
 } from "../../app/redditSlice";
+import { selectSelectedSubreddit } from '../../app/subredditSlice'
 
 const PostList = () => {
   const dispatch = useDispatch();
+  const prefix = useSelector(selectSelectedSubreddit);
   const posts = useSelector(selectPosts);
   const search = useSelector(selectPostSearchQuery);
+  
   useEffect(() => {
-    dispatch(fetchPosts(search));
-  }, [search]);
+    dispatch(fetchPosts(prefix, search));
+  }, [search, prefix]);
 
   // not all image urls are images, so i need to check before rending them
   function checkIfImage(string) {
