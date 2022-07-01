@@ -9,6 +9,8 @@ import {
   setsubRedditSearchTerm,
   selectSelectedSubreddit,
 } from "../../app/subredditSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = () => {
   // store local search term ini useState
@@ -48,7 +50,8 @@ const SearchBar = () => {
           name="q"
           placeholder={"Searching " + subRedditSelected}
         ></input>
-        {localSearchTerm === "" ? "" : <button id="search-submit" type="submit">Search</button> }
+        {localSearchTerm === "" ? "" : <button id="search-submit" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} />
+</button> }
       </form>
     </div>
   );
