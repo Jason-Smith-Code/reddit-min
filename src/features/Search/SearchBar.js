@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import './SearchBar.css'
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectPostSearchQuery,
   setPostSearchTerm,
 } from "../../app/redditSlice";
 import {
+  setSelectedSubreddit,
   setsubRedditSearchTerm,
   selectSelectedSubreddit,
 } from "../../app/subredditSlice";
@@ -14,7 +15,6 @@ const SearchBar = () => {
   const [localSearchTerm, setLocalSearchTerm] = useState("");
   const dispatch = useDispatch();
   const subRedditSelected = useSelector(selectSelectedSubreddit);
-  const selectPostTerm = useSelector(selectPostSearchQuery);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,27 +26,29 @@ const SearchBar = () => {
     setLocalSearchTerm("");
   }
 
+  function removeSubreddit() {
+    dispatch(setSelectedSubreddit(""))
+  }
+
   return (
-    <div>
+    <div id="search-container">
       {/* Show subreddit */}
-      <p>{subRedditSelected}</p>
+      {subRedditSelected ? <div id="search-prefix-container"><button id="remove-subreddit-button"  onClick={removeSubreddit}>X</button><p >{subRedditSelected}</p></div> : ""}
       <form
         id="search"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <p>Current Search Term: {selectPostTerm}</p>
-
         <input
           onChange={(e) => setLocalSearchTerm(e.target.value)}
           value={localSearchTerm}
           type="search"
-          id="query"
+          id="search-query"
           name="q"
-          placeholder="Search..."
+          placeholder={"Searching " + subRedditSelected}
         ></input>
-        <button type="submit">Search</button>
+        {localSearchTerm === "" ? "" : <button id="search-submit" type="submit">Search</button> }
       </form>
     </div>
   );

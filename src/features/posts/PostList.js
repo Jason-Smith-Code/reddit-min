@@ -15,7 +15,7 @@ const PostList = () => {
   
   useEffect(() => {
     dispatch(fetchPosts(prefix, search));
-  }, [search, prefix]);
+  }, [search, prefix, dispatch]);
 
   // not all image urls are images, so i need to check before rending them
   function checkIfImage(string) {
@@ -38,15 +38,14 @@ const PostList = () => {
   };
 
   return (
-    <div>
-      <ul>
+      <ul id="post-list">
         {posts.map((redditPost) => (
           <li className="post-container" key={redditPost.id}>
             {/* Subreddit */}
             <p>{redditPost.subreddit_name_prefixed}</p>
             {/* Show image if image exists */}
             {checkIfImage(redditPost.url) ? (
-              <img className="post-image" src={redditPost.url}></img>
+              <img alt={redditPost.title} className="post-image" src={redditPost.url}></img>
             ) : (
               ""
             )}
@@ -64,7 +63,6 @@ const PostList = () => {
           </li>
         ))}
       </ul>
-    </div>
   );
 };
 

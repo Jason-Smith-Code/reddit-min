@@ -10,7 +10,6 @@
   --Burnt:#CA5310;
   --Mahogany:#BB4D00;
   --Kobe:#8F250C;
-  --Kobe:#691E06;
 }
 
 p, a {
@@ -36,3 +35,10 @@ h2 {
   margin-right: 50px;
 }
 
+#header {
+  text-align: center;
+}
+
+#logo {
+  margin-bottom: 20px
+}

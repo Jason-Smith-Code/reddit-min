@@ -38,3 +38,5 @@ We can also select search for a subreddit separately
 	We can un select the subreddit and return to base search
 	when we have a subreddit selected, it will show to the user
 	if no results are found show this to the user
+
+If search is empty, prevent search
