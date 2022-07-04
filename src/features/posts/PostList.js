@@ -19,7 +19,7 @@ const PostList = () => {
 
   useEffect(() => {
     dispatch(fetchPosts(prefix, search));
-  }, [search, prefix]);
+  }, [search, prefix, dispatch]);
 
   useEffect(() => {
     console.log("comments have changed");
@@ -68,7 +68,11 @@ const PostList = () => {
             <p>{redditPost.subreddit_name_prefixed}</p>
             {/* Show image if image exists */}
             {checkIfImage(redditPost.url) ? (
-              <img className="post-image" src={redditPost.url}></img>
+              <img
+                alt={redditPost.title}
+                className="post-image"
+                src={redditPost.url}
+              ></img>
             ) : (
               ""
             )}

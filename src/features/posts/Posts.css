@@ -1,22 +1,21 @@
-#posts-container {
-    width: 700px;
-    border: 1px solid black;
-    margin:25px;
-    padding: 25px;
-}
 
-.post-image {
-    width: 100%;
-}
-
-.post-container {
-    width: 100%;
-    margin: 20px 10px;
-    padding: 20px;
-    border: 1px solid black;
-}
-
-.comment-container {
-    margin: 25px 0;
+@media screen and (min-width: 1px) {
+    #posts-container {
+        width: 100%;
+    }
     
+    .post-image {
+        width: 100%;
+    }
+    
+    .post-container {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid black;
+    }
+    
+    #post-list {
+        list-style-type: none;
+    }
 }
