@@ -11,11 +11,57 @@
     .post-container {
         width: 100%;
         margin-bottom: 20px;
-        padding: 20px;
-        border: 1px solid black;
+        padding: 25px;
+        background-color: var(--Lightest);
+        border-radius: 25px;
+        box-shadow: #00000070 0px 2px 5px 0px;
     }
     
     #post-list {
         list-style-type: none;
+    }
+
+    .margin-bottom {
+        margin-bottom: 10px;
+    }
+
+    button.comments-button {
+        background-color: var(--Burnt);
+        color: var(--Lightest);
+        padding: 10px 20px;
+        border: 1px solid #eee4d9;
+        border-radius: 25px;
+        font-weight: 600;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
+    .button-icon {
+        margin-right: 10px;
+    }
+
+    .comment-container {
+        margin: 25px 0;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: #00000070 0px 2px 5px 0px;
+    }
+
+    .notification-text {
+        color: var(--Burnt);
+        font-weight: 600;
+        margin-top: 25px;
+    }
+
+    .notification-text-white {
+        color: var(--Lightest);
+        font-weight: 600;
+        margin-top: 25px;
     }
 }
