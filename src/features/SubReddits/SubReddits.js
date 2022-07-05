@@ -1,13 +1,12 @@
 import SubredditList from "./SubredditList";
 import React from "react";
-import { selectSubredditSearchQuery } from "../../app/subredditSlice";
 
-const SubReddits = () => {
+const SubReddits = ({ menu, setMenu }) => {
   // const currentArray = useSelector((state) => state.reddit.redditPosts);
   return (
-    <div>
+    <div id="subreddits-list">
       <h2>Subreddits</h2>
-      <SubredditList />
+      <SubredditList menu={menu} setMenu={setMenu} />
     </div>
   );
 };
