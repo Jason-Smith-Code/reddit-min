@@ -1,5 +1,17 @@
 #subreddits-list {
     list-style: none;
+    transition: 500ms;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    transform: translateX(100%);
+    background-color: #fc6a5f;
+    padding: 20px;
+    color: black;
+    max-height: 100vh;
+    overflow-y: scroll;
+    box-shadow: #00000070 0px 2px 5px 0px;
+    max-width: 100%;
   }
 
 .subreddit-image {
@@ -7,7 +19,8 @@
     height: 30px;
     margin-right: 10px;
     border-radius: 15px;
-    border: 1px solid black;
+    border: 1px solid black;    
+    background-color: var(--Lightest);
 }
 
 li.subreddit-list-row {
