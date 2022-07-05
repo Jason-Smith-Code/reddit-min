@@ -1,8 +1,10 @@
 Mobile optimise
+	design the sight from mobile up
 
 Change degault font
 add menu to header
 	button for toggling subreddit list
 	Hide subreddits in off screen menu
 
-Search bar with subreddit and search button is wider that intended
+loading comments is slow, put a cap on the ammount of comments loaded
+
