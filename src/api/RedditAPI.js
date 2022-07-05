@@ -8,11 +8,11 @@ const root = "https://www.reddit.com";
 // Search display
 export const getPostsFromReddit = async (prefix, search) => {
   const response = await fetch(
-    `${root}${prefix}/search.json?q=${search}&restrict_sr=1&sr_nsfw=`
+    `${root}/${prefix}/search.json?q=${search}&restrict_sr=1&sr_nsfw=`
   );
-  console.log(response);
+  // console.log(response);
   const json = await response.json();
-  console.log(json.data.children.map((post) => post.data));
+  // console.log(json.data.children.map((post) => post.data));
   return json.data.children.map((post) => post.data);
 };
 
@@ -22,17 +22,17 @@ export const getPostsFromReddit = async (prefix, search) => {
 // https://www.reddit.com/r/Diablo.json
 export const getPostsFromRedditWithoutSearch = async (subreddit) => {
   const response = await fetch(`${root}${subreddit}.json`);
-  console.log(response);
+  // console.log(response);
   const json = await response.json();
-  console.log(json.data.children.map((post) => post.data));
+  // console.log(json.data.children.map((post) => post.data));
   return json.data.children.map((post) => post.data);
 };
 
 // Comments
 export const getCommentsFromPost = async (permalink) => {
   const response = await fetch(`${root}${permalink}.json`);
-  console.log(response);
   const json = await response.json();
+  // console.log(json);
   // [1] contains all the comment data
   return json[1].data.children.map((post) => post.data);
 };
