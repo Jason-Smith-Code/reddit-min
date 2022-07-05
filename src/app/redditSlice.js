@@ -27,13 +27,16 @@ export const fetchPosts = (prefix, search) => async (dispatch) => {
 // /r/Damnthatsinteresting/comments/uy0jxw/over_the_24_hours_since_the_uvalde_massacre_fox/
 export const fetchComments = (index, permalink) => async (dispatch) => {
   try {
-    dispatch(loadingComments());
+    dispatch(loadingComments(index));
     const comments = await getCommentsFromPost(permalink);
-    console.log(comments);
+    //console.log(comments);
+    // remove last object in array as its not a comment but more of a summary and we dont need to use this
+    comments.pop();
+    //console.log(comments.length);
     dispatch(getCommentsSuccess({ index, comments }));
     dispatch(toggleShowingComments(index));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     dispatch(getCommentFail());
   }
 };
@@ -72,10 +75,10 @@ const redditSlice = createSlice({
     setPostSearchTerm(state, action) {
       state.postSearchTerm = action.payload;
     },
-    loadingComments(state) {
+    loadingComments(state, action) {
       console.log("loading comments");
-      state.isLoading = true;
-      state.error = false;
+      state.posts[action.payload].loadingComments = true;
+      state.posts[action.payload].error = false;
     },
     getCommentsSuccess(state, action) {
       console.log("comments successfully loaded");
