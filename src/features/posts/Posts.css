@@ -57,11 +57,33 @@
         color: var(--Burnt);
         font-weight: 600;
         margin-top: 25px;
+        text-align: center;
     }
 
     .notification-text-white {
         color: var(--Lightest);
         font-weight: 600;
         margin-top: 25px;
+        text-align: center;
+    }
+
+    .loading-notification-text {
+        color: var(--Burnt);
+        font-weight: 600;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    .heading {
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1000px) {
+    #posts-container {
+        width: 100%;
+        background: white;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: #00000070 0px 2px 5px 0px;
     }
 }
