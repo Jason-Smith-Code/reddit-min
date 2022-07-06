@@ -45,13 +45,13 @@ export const getCommentsFromPost = async (permalink) => {
 export const getSubredditsFromReddit = async () => {
   const response = await fetch(`${root}/subreddits.json`);
   const json = await response.json();
-  console.log(json.data.children.map((subreddit) => subreddit.data));
+  // console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
 };
 // Search display
 export const getSearchSubredditsFromReddit = async (search) => {
   const response = await fetch(`${root}/subreddits/search.json?q=${search}`);
   const json = await response.json();
-  console.log(json.data.children.map((subreddit) => subreddit.data));
+  // console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
 };
