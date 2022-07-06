@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import SearchBar from "./features/search/SearchBar";
 import SubReddits from "./features/SubReddits/SubReddits";
-import Posts from "./features/posts/Posts";
+import PostList from "./features/posts/PostList";
+import BackToTop from "./features/backToTop/BackToTop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,9 +32,10 @@ function App() {
         <SearchBar />
       </div>
       <div id="main-container">
-        <Posts />
+        <PostList />
         <SubReddits menu={menu} setMenu={setMenu} />
       </div>
+      <BackToTop />
     </div>
   );
 }
