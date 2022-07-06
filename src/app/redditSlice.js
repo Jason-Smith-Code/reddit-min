@@ -36,7 +36,7 @@ export const fetchComments = (index, permalink) => async (dispatch) => {
     dispatch(getCommentsSuccess({ index, comments }));
     dispatch(toggleShowingComments(index));
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     dispatch(getCommentFail());
   }
 };
@@ -76,17 +76,17 @@ const redditSlice = createSlice({
       state.postSearchTerm = action.payload;
     },
     loadingComments(state, action) {
-      console.log("loading comments");
+      // console.log("loading comments");
       state.posts[action.payload].loadingComments = true;
       state.posts[action.payload].error = false;
     },
     getCommentsSuccess(state, action) {
-      console.log("comments successfully loaded");
+      // console.log("comments successfully loaded");
       state.posts[action.payload.index].loadingComments = false;
       state.posts[action.payload.index].comments = action.payload.comments;
     },
     getCommentFail(state, action) {
-      console.log("comments failed");
+      // console.log("comments failed");
       state.posts[action.payload].loadingComments = false;
       state.posts[action.payload].error = true;
     },
@@ -114,3 +114,4 @@ export default redditSlice.reducer;
 export const selectPosts = (state) => state.reddit.posts;
 export const selectPostSearchQuery = (state) => state.reddit.postSearchTerm;
 export const selectPostComments = (state) => state.reddit.posts.comments;
+export const postLoading = (state) => state.reddit.isLoading;
