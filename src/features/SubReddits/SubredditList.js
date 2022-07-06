@@ -14,7 +14,7 @@ const SubredditList = ({ menu, setMenu }) => {
 
   const dispatch = useDispatch();
   const subreddits = useSelector(selectSubreddits);
-  //console.log(subreddits);
+  // console.log(subreddits);
   const search = useSelector(selectSubredditSearchQuery);
 
   function toggleMenu() {
@@ -41,14 +41,15 @@ const SubredditList = ({ menu, setMenu }) => {
     dispatch(setSelectedSubreddit(selectedLocalSubreddit));
   }, [selectedLocalSubreddit, dispatch]);
 
-  console.log(`menu is ${menu}`);
-  console.log(`setmenu is ${setMenu}`);
   // handle click of subreddit
   function handleClick(e) {
     e.preventDefault();
-    toggleMenu();
+    let width = window.innerWidth;
+    if (width <= 999) {
+      toggleMenu();
+    }
     const value = e.target.getAttribute("value");
-    //console.log(value);
+    // console.log(value);
     setSelectedLocalSubreddit(value);
   }
 
