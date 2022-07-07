@@ -5,8 +5,8 @@ import {
   fetchPosts,
   selectPosts,
   selectPostSearchQuery,
-} from "../../app/redditSlice";
-import { selectSelectedSubreddit } from "../../app/subredditSlice";
+} from "../../redux/redditSlice";
+import { selectSelectedSubreddit } from "../../redux/subredditSlice";
 import "./Posts.css";
 import Post from "./Post";
 

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import { faReddit } from "@fortawesome/fontawesome-free-brands";
-import { fetchComments, toggleShowingComments } from "../../app/redditSlice";
+import { fetchComments, toggleShowingComments } from "../../redux/redditSlice";
 import { today } from "../../utilities/Epoch";
 
 const Post = ({ index, redditPost }) => {

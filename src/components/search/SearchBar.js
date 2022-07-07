@@ -3,12 +3,12 @@ import './SearchBar.css'
 import { useSelector, useDispatch } from "react-redux";
 import {
   setPostSearchTerm,
-} from "../../app/redditSlice";
+} from "../../redux/redditSlice";
 import {
   setSelectedSubreddit,
   setsubRedditSearchTerm,
   selectSelectedSubreddit,
-} from "../../app/subredditSlice";
+} from "../../redux/subredditSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 

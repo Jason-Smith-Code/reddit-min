@@ -6,7 +6,7 @@ import {
   selectSubredditSearchQuery,
   fetchSubreddits,
   setSelectedSubreddit,
-} from "../../app/subredditSlice";
+} from "../../redux/subredditSlice";
 import "./SubredditList.css";
 
 const SubredditList = ({ menu, setMenu }) => {

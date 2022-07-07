@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import SearchBar from "./features/search/SearchBar";
-import SubReddits from "./features/SubReddits/SubReddits";
-import PostList from "./features/posts/PostList";
-import BackToTop from "./features/backToTop/BackToTop";
+import SearchBar from "../components/search/SearchBar";
+import SubReddits from "../components/SubReddits/SubReddits";
+import PostList from "../components/posts/PostList";
+import BackToTop from "../components/backToTop/BackToTop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
