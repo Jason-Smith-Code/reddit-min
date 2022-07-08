@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import './SearchBar.css'
+import "./SearchBar.css";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setPostSearchTerm,
-} from "../../redux/redditSlice";
+import { setPostSearchTerm } from "../../redux/redditSlice";
 import {
   setSelectedSubreddit,
   setsubRedditSearchTerm,
@@ -29,13 +27,22 @@ const SearchBar = () => {
   }
 
   function removeSubreddit() {
-    dispatch(setSelectedSubreddit(""))
+    dispatch(setSelectedSubreddit(""));
   }
 
   return (
     <div id="search-container">
       {/* Show subreddit */}
-      {subRedditSelected ? <div id="search-prefix-container"><button id="remove-subreddit-button"  onClick={removeSubreddit}>X</button><p >{subRedditSelected}</p></div> : ""}
+      {subRedditSelected ? (
+        <div id="search-prefix-container">
+          <button id="remove-subreddit-button" onClick={removeSubreddit}>
+            X
+          </button>
+          <p>{subRedditSelected}</p>
+        </div>
+      ) : (
+        ""
+      )}
       <form
         id="search"
         onSubmit={(e) => {
@@ -50,8 +57,13 @@ const SearchBar = () => {
           name="q"
           placeholder={"Searching " + subRedditSelected}
         ></input>
-        {localSearchTerm === "" ? "" : <button id="search-submit" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} />
-</button> }
+        {localSearchTerm === "" ? (
+          ""
+        ) : (
+          <button data-testid="search-submit" id="search-submit" type="submit">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        )}
       </form>
     </div>
   );
