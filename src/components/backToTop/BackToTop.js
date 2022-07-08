@@ -10,7 +10,7 @@ const BackToTop = () => {
   }
 
   return (
-    <button onClick={topFunction} id="back-top-top">
+    <button data-testid="back-to-top" onClick={topFunction} id="back-top-top">
       <FontAwesomeIcon size="xl" icon={faAngleUp} />
     </button>
   );
