@@ -22,10 +22,10 @@ function App() {
   return (
     <div className="App">
       <div id="header">
-        <p id="logo-text">
+        <h1 role="logo" id="logo-text">
           <span id="reddit">Reddit</span>
           <span id="mini">Mini</span>
-        </p>
+        </h1>
         <button id="menu" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </button>
