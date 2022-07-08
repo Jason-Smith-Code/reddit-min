@@ -27,7 +27,8 @@ function App() {
           <span id="mini">Mini</span>
         </h1>
         <button id="menu" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon id="menu-icon" icon={faBars} />
+           Menu
         </button>
         <SearchBar />
       </div>
