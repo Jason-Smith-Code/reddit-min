@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Logo } from "../components/logo/Logo";
 import SearchBar from "../components/search/SearchBar";
 import SubReddits from "../components/SubReddits/SubReddits";
 import PostList from "../components/posts/PostList";
@@ -22,13 +23,10 @@ function App() {
   return (
     <div className="App">
       <div id="header">
-        <h1 role="logo" id="logo-text">
-          <span id="reddit">Reddit</span>
-          <span id="mini">Mini</span>
-        </h1>
+        <Logo />
         <button id="menu" onClick={toggleMenu}>
           <FontAwesomeIcon id="menu-icon" icon={faBars} />
-           Menu
+          Menu
         </button>
         <SearchBar />
       </div>
