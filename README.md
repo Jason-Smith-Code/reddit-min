@@ -54,9 +54,10 @@ https://www.linkedin.com/in/jason-smith-code/
 
 ## Screen Shots
 
-Main Page : Desktop
-![Main Page : Light Theme](src/images/screenShots/desktop.jpg)
-Main Page : Mobile
+Main Page : Desktop <br>
+![Main Page : Light Theme](src/images/screenShots/desktop.jpg)<br>
+
+Main Page : Mobile <br>
 ![Main Page : Dark Theme](src/images/screenShots/mobile.jpg)
 
 ## Viewing the application
