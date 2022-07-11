@@ -17,11 +17,28 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--Mellow);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--Lightest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--Burnt);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--Kobe);
+}
+
 @media screen and (min-width: 1px) { 
-  body {
-    background-color: var(--Mellow);
-  }
-  
   p, a, h1, h2, h3, h4, h5, h6, span {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--Kobe)
@@ -38,25 +55,6 @@ html {
   .App {
     width: 100%;
     padding:10px;
-  }
-  
-  #logo-text {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 20px 0;
-  }
-  #reddit {
-    background-color:var(--Kobe);
-    padding: 10px 0 10px 20px;
-    border-radius: 50px 0 0 50px;
-    color: white
-  }
-  
-  #mini {
-    background-color:var(--Burnt);
-    padding: 10px 20px 10px 0px;
-    border-radius: 0 50px 50px  0;
-    color: white
   }
   
   #main-container {
@@ -77,10 +75,6 @@ html {
     margin-bottom: 50px;
   }
   
-  #logo {
-    margin-bottom: 20px
-  }
-  
   #menu {
     position: fixed;
     top: 0px; 
@@ -96,23 +90,6 @@ html {
 
   #menu-icon {
     padding-right: 5px
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--Lightest);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--Burnt);
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--Kobe);
   }
 }
 

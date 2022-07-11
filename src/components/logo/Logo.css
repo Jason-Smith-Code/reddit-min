@@ -1,0 +1,26 @@
+@media screen and (min-width: 1px) { 
+    
+    #logo-text {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 20px 0;
+    }
+
+    #reddit {
+      background-color:var(--Kobe);
+      padding: 10px 0 10px 20px;
+      border-radius: 50px 0 0 50px;
+      color: white
+    }
+    
+    #mini {
+      background-color:var(--Burnt);
+      padding: 10px 20px 10px 0px;
+      border-radius: 0 50px 50px  0;
+      color: white
+    }
+    
+    #logo {
+      margin-bottom: 20px
+    }  
+}
