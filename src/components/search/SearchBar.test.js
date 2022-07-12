@@ -27,8 +27,10 @@ describe("<Searchbar />", () => {
     fireEvent.change(searchBar, { target: { value: "search query" } });
     // Check the the search bar has the text value above
     expect(searchBar).toHaveValue("search query");
-    // Identify the submit button. It has no text, only an icon
-    const submitButton = screen.getByTestId("search-submit");
+    // Identify the submit button by its alt tag since its only has an icon
+    const submitButton = screen.getByRole("button", {
+      name: /magnifying glass/i,
+    });
     // expect submit button to be in the document
     expect(submitButton).toBeInTheDocument();
     // when we remove the value in the search bar the submit button is no longer on the screen
@@ -49,7 +51,9 @@ describe("<Searchbar />", () => {
     // check that the value of the search bar input has changed
     expect(searchBar).toHaveValue("diablo");
     // identify the submit button
-    const submitButton = screen.getByTestId("search-submit");
+    const submitButton = screen.getByRole("button", {
+      name: /magnifying glass/i,
+    });
     // click the submit button
     fireEvent.click(submitButton);
     // identify "loading posts" message

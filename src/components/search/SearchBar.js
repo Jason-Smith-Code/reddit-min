@@ -60,7 +60,7 @@ const SearchBar = () => {
         {localSearchTerm === "" ? (
           ""
         ) : (
-          <button data-testid="search-submit" id="search-submit" type="submit">
+          <button alt="magnifying glass" id="search-submit" type="submit">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         )}
